@@ -8,6 +8,7 @@ import passwordIcon from "../Assets/password.png";
 import emailIcon from "../Assets/email.png";
 
 import axios from '../Api/axios';
+import { Button, Input } from "antd";
 
 //kullanıcı adı ve parola için herhangi bir kısıtlama belirtilmediği için bu regexleri kullanmadım.
 // const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -125,7 +126,7 @@ const LoginRegister = () => {
             <div className="inputs">
               <div className="input">
                 <img src={userIcon} alt="" />
-                <input
+                <Input
                   required
                   type="text"
                   id="username"
@@ -148,11 +149,9 @@ const LoginRegister = () => {
                    Required Field !
                 </p>
               </div>
-            </div>
-            <div className="inputs">
               <div className="input">
                 <img src={passwordIcon} alt="" />
-                <input
+                <Input
                   required
                   type="password"
                   id="password"
@@ -173,12 +172,9 @@ const LoginRegister = () => {
                   Required Field !
                 </p>
               </div>
-            </div>
-
-            <div className="inputs">
               <div className="input">
                 <img src={emailIcon} alt="" />
-                <input
+                <Input
                   required
                   type="email"
                   id="email"
@@ -202,7 +198,7 @@ const LoginRegister = () => {
             </div>
 
             <div className="submit-container">
-              <button className="submit">Sign Up</button>
+              <Button className="submit">Sign Up</Button>
               <p>
                 Already registered?
                 <br />

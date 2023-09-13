@@ -6,6 +6,9 @@
   width: 600px;
   background: #fff;
   padding-bottom: 30px;
+  border-radius: 100px;
+  opacity: 0.9;
+  margin-bottom: 33%;
 }
 
 .header {
@@ -73,8 +76,13 @@
   font-size: 19px;
 }
 
+.input input:focus {
+  border:2px solid #676767;
+}
+
 .submit-container {
   display: flex;
+  justify-content: center;
   gap: 30px;
   margin: 60px auto;
 }
@@ -94,13 +102,10 @@
   border: 1px solid #bb4006;
 }
 
-/* .submit:focus {
-  outline: none !important;
+.submit:hover {
+  color: #fff !important;
+  border: 1px solid #bb4006 !important;
 }
-.submit::placeholder { 
-  color: #bb4006;
-  opacity: 1; 
-} */
 
 .gray {
   background: #eaeaea;
@@ -131,7 +136,6 @@
   background: #676767;
   border-radius: 5px;
   border: 1px solid #fff;
-  
 }
 
 .myGrid .myGridTitles {
@@ -143,6 +147,7 @@
   align-items: center;
   margin: 5px;
   border: 1px solid #676767;
+  color: #fff;
 }
 
 .myGrid .myGridContent {
@@ -152,4 +157,5 @@
   align-items: center;
   margin: 5px;
   border: 1px solid #676767;
+  color: #fff;
 }

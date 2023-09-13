@@ -1,6 +1,6 @@
 import "../Components/LoginRegister.css";
 import React, { useState } from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Button, Select, Input } from "antd";
 
 //import Select from "react-select";
 
@@ -89,14 +89,15 @@ const BuildingConfiguration = () => {
         </p>
         <div className="inputs">
           <div className="input">
-            <select className="selectStyle" required>
-              {buildingTypeList.map((item) => (
-                <option> {item.label}</option>
-              ))}
-            </select>
+            <Select 
+            className="selectStyle" 
+            required
+            options={buildingTypeList}
+            >
+            </Select>
           </div>
           <div className="input">
-            <input
+            <Input
               required
               type="number"
               id="buildingCost"
@@ -108,7 +109,7 @@ const BuildingConfiguration = () => {
           </div>
 
           <div className="input">
-            <input
+            <Input
               required
               type="number"
               id="constructionTime"
@@ -121,7 +122,7 @@ const BuildingConfiguration = () => {
           </div>
 
           <div className="submit-container">
-            <button className="submit">OK</button>
+            <Button className="submit">OK</Button>
           </div>
         </div>
       </form>

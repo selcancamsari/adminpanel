@@ -9,6 +9,7 @@ import axios from "../Api/axios";
 
 import userIcon from "../Assets/user.png";
 import passwordIcon from "../Assets/password.png";
+import { Button, Input } from "antd";
 
 const LOGIN_URL = "/auth";
 
@@ -35,24 +36,37 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        LOGIN_URL,
-        JSON.stringify({ user, pwd }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
-      console.log(JSON.stringify(response?.data));
-      //console.log(JSON.stringify(response));
-      const accessToken = response?.data?.accessToken;
-      //Eğer rol yapısı olsaydı bunu backendden gönderirdik
-      //const roles = response?.data?.roles;
-      //setAuth({ user, pwd, roles, accessToken });
-      setAuth({ user, pwd, accessToken });
-      setUser("");
-      setPwd("");
+      //TODO 
+      // const response = await axios.post(
+      //   LOGIN_URL,
+      //   JSON.stringify({ user, pwd }),
+      //   {
+      //     headers: { "Content-Type": "application/json" },
+      //     withCredentials: true,
+      //   }
+      // );
+      // console.log(JSON.stringify(response?.data));
+
+      // //console.log(JSON.stringify(response));
+      // const accessToken = response?.data?.accessToken;
+
+      // //Eğer rol yapısı olsaydı bunu backendden gönderirdik
+      // //const roles = response?.data?.roles;
+      // //setAuth({ user, pwd, roles, accessToken });
+      // setAuth({ user, pwd, accessToken });
+
+      // setTokenInCookie(accessToken);
+      // setUser("");
+      // setPwd("");
+      //setSuccess(true);
+
+      const accessToken = Math.random().toString(36).substring(2, 20);
+      setTokenInCookie(accessToken, user);
+
+      console.log(accessToken);
       setSuccess(true);
+
+
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");
@@ -69,6 +83,25 @@ const Login = () => {
       setSuccess(true);
     }
   };
+
+  function setTokenInCookie(token, user) {
+    const cookie = {
+      userName: user,
+      accessToken: token,
+      expires: new Date(Date.now() + 3600 * 24), 
+    };
+    document.cookie = JSON.stringify(cookie);
+
+    console.log("cookie", cookie);
+
+    if (document.cookie.includes(token)) {
+      console.log("success");
+    }
+    else 
+    {
+      console.log("error");
+    }
+  }
 
   return (
     <div className="container">
@@ -101,7 +134,7 @@ const Login = () => {
             <div className="inputs">
               <div className="input">
                 <img src={userIcon} alt="" />
-                <input
+                <Input
                   type="text"
                   id="username"
                   ref={userRef}
@@ -111,11 +144,9 @@ const Login = () => {
                   required
                 />
               </div>
-            </div>
-            <div className="inputs">
               <div className="input">
                 <img src={passwordIcon} alt="" />
-                <input
+                <Input
                   type="password"
                   id="password"
                   onChange={(e) => setPwd(e.target.value)}
@@ -125,7 +156,7 @@ const Login = () => {
               </div>
             </div>
             <div className="submit-container">
-              <button className="submit">Sign In</button>
+              <Button className="submit">Sign In</Button>
               <p>
                 Need an Account?
                 <br />
