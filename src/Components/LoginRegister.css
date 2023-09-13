@@ -1,0 +1,155 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 200px;
+  width: 600px;
+  background: #fff;
+  padding-bottom: 30px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.text {
+  color: #bb4006;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.underline {
+  width: 61px;
+  height: 6px;
+  background: #bb4006;
+  border-radius: 9px;
+}
+
+.inputs {
+  margin-top: 55px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  width: 480px;
+  height: 50px;
+  background: #eaeaea;
+  border-radius: 6px;
+}
+
+.selectStyle {
+  border: 0px solid;
+  background: #676767;
+  width: 490px;
+  padding: 5px;
+  color: #676767;
+  height: 37px;
+  border-radius: 10px;
+  background: transparent;
+  font-size: 19px;
+}
+
+.input img {
+  margin: 0px 30px;
+  height: 30px;
+}
+
+.input input {
+  height: 50px;
+  width: 350px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 19px;
+}
+
+.submit-container {
+  display: flex;
+  gap: 30px;
+  margin: 60px auto;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+  height: 59px;
+  color: #fff;
+  background: #bb4006;
+  border-radius: 50px;
+  font-size: 19px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid #bb4006;
+}
+
+/* .submit:focus {
+  outline: none !important;
+}
+.submit::placeholder { 
+  color: #bb4006;
+  opacity: 1; 
+} */
+
+.gray {
+  background: #eaeaea;
+  color: #676767;
+}
+
+.instructions > svg {
+  margin-right: 0.25rem;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.line {
+  display: inline-block;
+}
+.errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.myGrid {
+  background: #676767;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  
+}
+
+.myGrid .myGridTitles {
+  display: flex;
+  font-style: italic;
+  font-weight: 700;
+  background-color: #bb4006;
+  height: 37px;
+  align-items: center;
+  margin: 5px;
+  border: 1px solid #676767;
+}
+
+.myGrid .myGridContent {
+  display: flex;
+  font-weight: 700;
+  height: 37px;
+  align-items: center;
+  margin: 5px;
+  border: 1px solid #676767;
+}
