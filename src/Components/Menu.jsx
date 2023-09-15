@@ -1,9 +1,17 @@
+import Layout from "antd/es/layout/layout";
 import "../Components/LoginRegister.css";
 import { Link } from "react-router-dom";
 
 const Menu = () => {
   return (
+
+    
+
     <div className="container">
+
+<Layout/>
+
+
       <div className="header"> Welcome
         <div className="text"> The Menu</div>
         <div className="underline"></div>

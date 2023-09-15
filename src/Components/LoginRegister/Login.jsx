@@ -2,20 +2,20 @@ import "../../Components/LoginRegister.css";
 
 //import AuthContext from "../Context/AuthProvider";
 import { useRef, useState, useEffect } from "react"; //useContext
-import useAuth from "../Hooks/UseAuth";
-import { Link } from "react-router-dom";
+//import useAuth from "../Hooks/UseAuth";
+import { Link, useNavigate } from "react-router-dom";
 
-import axios from "../Api/axios";
+//import axios from "../Api/axios";
 
 import userIcon from "../Assets/user.png";
 import passwordIcon from "../Assets/password.png";
 import { Button, Input } from "antd";
 
-const LOGIN_URL = "/auth";
+//const LOGIN_URL = "/auth";
 
 const Login = () => {
   //const { setAuth } = useContext(AuthContext);
-  const { setAuth } = useAuth();
+ // const { setAuth } = useAuth();
   const userRef = useRef();
   const errRef = useRef();
 
@@ -32,8 +32,12 @@ const Login = () => {
     setErrMsg("");
   }, [user, pwd]);
 
+  let navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    console.log("ha");
 
     try {
       //TODO 
@@ -61,11 +65,13 @@ const Login = () => {
       //setSuccess(true);
 
       const accessToken = Math.random().toString(36).substring(2, 20);
-      setTokenInCookie(accessToken, user);
+      //setTokenInCookie(accessToken, user);
 
       console.log(accessToken);
       setSuccess(true);
 
+      console.log("hhahah");
+      navigate("/menu");
 
     } catch (err) {
       if (!err?.response) {
@@ -84,24 +90,24 @@ const Login = () => {
     }
   };
 
-  function setTokenInCookie(token, user) {
-    const cookie = {
-      userName: user,
-      accessToken: token,
-      expires: new Date(Date.now() + 3600 * 24), 
-    };
-    document.cookie = JSON.stringify(cookie);
+  // function setTokenInCookie(token, user) {
+  //   const cookie = {
+  //     userName: user,
+  //     accessToken: token,
+  //     expires: new Date(Date.now() + 3600 * 24), 
+  //   };
+  //   document.cookie = JSON.stringify(cookie);
 
-    console.log("cookie", cookie);
+  //   console.log("cookie", cookie);
 
-    if (document.cookie.includes(token)) {
-      console.log("success");
-    }
-    else 
-    {
-      console.log("error");
-    }
-  }
+  //   if (document.cookie.includes(token)) {
+  //     console.log("success");
+  //   }
+  //   else 
+  //   {
+  //     console.log("error");
+  //   }
+  // }
 
   return (
     <div className="container">
@@ -156,7 +162,7 @@ const Login = () => {
               </div>
             </div>
             <div className="submit-container">
-              <Button className="submit">Sign In</Button>
+              <Button className="submit" onClick={handleSubmit}>Sign In</Button>
               <p>
                 Need an Account?
                 <br />

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+//import { useNavigate } from 'react-router-dom';
 import {Link} from 'react-router-dom';
 //import {useAlert} from 'react-alert';
 import "../../Components/LoginRegister.css";
@@ -8,7 +9,7 @@ import passwordIcon from "../Assets/password.png";
 import emailIcon from "../Assets/email.png";
 
 import axios from '../Api/axios';
-import { Button, Input } from "antd";
+import { Alert, Button, Input } from "antd";
 
 //kullanıcı adı ve parola için herhangi bir kısıtlama belirtilmediği için bu regexleri kullanmadım.
 // const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -25,21 +26,21 @@ const LoginRegister = () => {
 
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
-  const [userFocus, setUserFocus] = useState(false);
+  //const [userFocus, setUserFocus] = useState(false);
 
   const [pwd, setPwd] = useState("");
   const [validPwd, setValidPwd] = useState(false);
-  const [pwdFocus, setPwdFocus] = useState(false);
+  //const [pwdFocus, setPwdFocus] = useState(false);
 
   const [email, setEmail] = useState("");
   const [validEmail, setValidEmail] = useState(false);
-  const [emailFocus, setEmailFocus] = useState(false);
+  //const [emailFocus, setEmailFocus] = useState(false);
 
   //const [matchPwd, setMatchPwd] = useState("");
   //const [validMatch, setValidMatch] = useState(false);
   //const [matchFocus, setMatchFocus] = useState(false);
 
-  const [errMsg, setErrMsg] = useState("");
+  //const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
@@ -60,18 +61,20 @@ const LoginRegister = () => {
     setValidEmail(email);
   }, [email]);
 
-  useEffect(() => {
-    setErrMsg("");
-  }, [user, pwd, email]);
+  // useEffect(() => {
+  //   setErrMsg("");
+  // }, [user, pwd, email]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    //const navigate = useNavigate();
+    console.log(user, pwd, email);
     // USER_REGEX.test(user);
     // PWD_REGEX.test(pwd);
-    if (!user || !pwd || !email) {
-      setErrMsg("Invalid Entry");
-      return;
-    }
+    // if (!user || !pwd || !email) {
+    //   setErrMsg("Invalid Entry");
+    //   return;
+    // }
     try {
       const response = await axios.post(
         REGISTER_URL,
@@ -89,14 +92,16 @@ const LoginRegister = () => {
       setUser("");
       setPwd("");
       setEmail("");
+
+     // navigate('/')
     } catch (err) {
-      if (!err?.response) {
-        setErrMsg("No Server Response");
-      } else if (err.response?.status === 409) {
-        setErrMsg("Username Taken");
-      } else {
-        setErrMsg("Registration Failed");
-      }
+      // if (!err?.response) {
+      //   setErrMsg("No Server Response");
+      // } else if (err.response?.status === 409) {
+      //   setErrMsg("Username Taken");
+      // } else {
+      //   setErrMsg("Registration Failed");
+      // }
       errRef.current?.focus();
     }
   };
@@ -110,13 +115,7 @@ const LoginRegister = () => {
         </section>
       ) : (
         <section>
-          <p
-            ref={errRef}
-            className={errMsg ? "errmsg" : "offscreen"}
-            aria-live="assertive"
-          >
-            {errMsg}
-          </p>
+
           <div className="header">
             <div className="text"> Sign Up</div>
             <div className="underline"></div>
@@ -136,19 +135,11 @@ const LoginRegister = () => {
                   onChange={(e) => setUser(e.target.value)}
                   value={user}
                   aria-invalid={validName ? "false" : "true"}
-                  aria-describedby="uidnote"
-                  onFocus={() => setUserFocus(true)}
-                  onBlur={() => setUserFocus(false)}
+                  // onFocus={() => setUserFocus(true)}
+                  // onBlur={() => setUserFocus(false)}
                 />
-                <p
-                  id="uidnote"
-                  className={
-                    userFocus && !validName ? "instructions" : "offscreen"
-                  }
-                >
-                   Required Field !
-                </p>
               </div>
+              { !user ? <Alert className="myAlert" message="User Name" type="error" showIcon /> : " " }
               <div className="input">
                 <img src={passwordIcon} alt="" />
                 <Input
@@ -159,19 +150,11 @@ const LoginRegister = () => {
                   onChange={(e) => setPwd(e.target.value)}
                   value={pwd}
                   aria-invalid={validPwd ? "false" : "true"}
-                  aria-describedby="pwdnote"
-                  onFocus={() => setPwdFocus(true)}
-                  onBlur={() => setPwdFocus(false)}
+                  // onFocus={() => setPwdFocus(true)}
+                  // onBlur={() => setPwdFocus(false)}
                 />
-                <p
-                  id="pwdnote"
-                  className={
-                    pwdFocus && !validPwd ? "instructions" : "offscreen"
-                  }
-                >
-                  Required Field !
-                </p>
               </div>
+              { !pwd ? <Alert className="myAlert" message="Password is Required" type="error" showIcon /> : " " }
               <div className="input">
                 <img src={emailIcon} alt="" />
                 <Input
@@ -182,19 +165,11 @@ const LoginRegister = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
                   aria-invalid={validEmail ? "false" : "true"}
-                  aria-describedby="emailnote"
-                  onFocus={() => setEmailFocus(true)}
-                  onBlur={() => setEmailFocus(false)}
+                  // onFocus={() => setEmailFocus(true)}
+                  // onBlur={() => setEmailFocus(false)}
                 />
-                <p
-                  id="emailnote"
-                  className={
-                    emailFocus && !validEmail ? "instructions" : "offscreen"
-                  }
-                >
-                   Required Field !
-                </p>
               </div>
+              { !email ? <Alert className="myAlert" message="Email is Required" type="error" showIcon /> : " " }
             </div>
 
             <div className="submit-container">

@@ -4,9 +4,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100%;
-  width: 99%;
   background: linear-gradient(#e66465, #9198e5);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 code {

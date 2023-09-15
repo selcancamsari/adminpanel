@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+//import React, { useEffect, useState } from "react";
 import Login from "./Components/LoginRegister/Login";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import LoginRegister from "./Components/LoginRegister/LoginRegister";
-import Layout from "./Components/Layout";
+//import Layout from "./Components/Layout";
 import Menu from "./Components/Menu";
+import Navbar from './Components/Navbar'
 import BuildingCongiguration from "./Components/BuildingConfiguration";
 
 function App() {
@@ -32,12 +33,17 @@ function App() {
 
   return (
     <div>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Layout />}></Route>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<LoginRegister />} />
         <Route path="menu" element={<Menu/>}/>
         <Route path="buildConfiguration" element={<BuildingCongiguration/>}/>
+
+        <Route
+            path="/*"
+            element={<Navigate to="/login" />}  
+          />
       </Routes>
     </div>
   );
