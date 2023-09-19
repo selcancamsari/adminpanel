@@ -6,9 +6,8 @@
   padding-bottom: 1%;
   border-radius: 25%;
   opacity: 0.9;
-  margin-top: 10%;
-  
-  /* margin-bottom: 33%; */
+  margin: auto;
+margin-top: 10%;
 }
 
 .header {
@@ -24,6 +23,12 @@
   font-weight: 700;
 }
 
+.textBuilding {
+  color:#e66465;
+  font-size: 200%;
+  font-weight: bold;
+}
+
 .underline {
   width: 50%;
   height: 0.5em;
@@ -32,8 +37,8 @@
 }
 
 .myAlert {
-width: 50%;
-margin-left: 15%;
+  width: 50%;
+  margin-left: 15%;
 }
 
 .inputs {
@@ -80,7 +85,7 @@ margin-left: 15%;
 }
 
 .input input:focus {
-  border:0.2em solid #676767;
+  border: 0.2em solid #676767;
 }
 
 .submit-container {
@@ -108,7 +113,8 @@ margin-left: 15%;
 
 .submit:hover {
   color: #fff !important;
-  background: linear-gradient(0.25turn, #e66465, #8875f0, #9198e5);;
+  background: linear-gradient(0.25turn, #e66465, #8875f0, #9198e5);
+  ;
   border: 0.1em solid linear-gradient(0.25turn, #e66465, #8875f0, #9198e5) !important;
 }
 
@@ -120,7 +126,7 @@ margin-left: 15%;
   color: #676767;
 }
 
-.instructions > svg {
+.instructions>svg {
   margin-right: 0.25rem;
 }
 
@@ -132,6 +138,7 @@ margin-left: 15%;
 .line {
   display: inline-block;
 }
+
 .errmsg {
   background-color: lightpink;
   color: firebrick;
